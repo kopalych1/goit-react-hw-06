@@ -14,14 +14,18 @@ import Modal from '@/components/Modal/Modal';
 
 import { fetchNotes } from '@/lib/api';
 
-export default function NotesClient() {
+interface NotesClientProps {
+  tag: string | undefined;
+}
+
+export default function NotesClient({ tag }: NotesClientProps) {
   const [page, setPage] = useState<number>(1);
   const [search, setSearch] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const { data, isLoading } = useQuery({
     queryKey: ['notes', search, page],
-    queryFn: () => fetchNotes(search, page),
+    queryFn: () => fetchNotes(search, page, tag),
     throwOnError: true,
   });
 
