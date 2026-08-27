@@ -6,11 +6,11 @@ import Modal from '@/components/Modal/Modal';
 import { type Note } from '@/types/note';
 import css from './NotePreview.module.css';
 
-interface NotePreviewProps {
+interface NotePreviewClientProps {
   note: Note;
 }
 
-export default function NotePreview({ note }: NotePreviewProps) {
+export default function NotePreviewClient({ note }: NotePreviewClientProps) {
   const router = useRouter();
 
   function handleClose() {
